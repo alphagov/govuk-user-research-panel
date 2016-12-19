@@ -1,0 +1,13 @@
+{% extends 'layout.twig' %}
+{% block body %}
+<form action="{{ survey_url }}" method="get" class="form">
+
+    <p>You've confirmed  that <strong class="bold-small">{{ contact.email1 }}</strong> is your email address.</p>
+
+    <p class="text">You can cancel or unsubscribe at any time by clicking the 'unsubscribe' link in the email you got.</p>
+
+    <div class="form-group">
+        <input type="submit" class="button" value="Continue signing up">
+    </div>
+</form>
+{% endblock %}

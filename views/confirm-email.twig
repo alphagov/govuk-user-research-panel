@@ -1,0 +1,21 @@
+{% extends 'layout.twig' %}
+{% block body %}
+<div class="form-group text">
+    <p>We've sent an email to <strong class="bold-small">{{ contact.email1  }}</strong></p>
+    <p>Open the email to continue signing up.</p>
+    <div class="form-group">
+        <details role="group">
+            <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">Not got the confirmation email?</span></summary>
+            <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+                <p>If the email doesn't arrive in a few seconds, check your spam folder and that your email is correct.</p>
+                <form method="POST" action="{{ form_action }}">
+                    <input type="hidden" name="contact" value="{{ contact.id }}"/>
+                    <div class="form-group">
+                        <p><input type="submit" class="button next" value="Resend link"> or <a href="{{ form_url }}/contact">change your email address and try again.</a></p>
+                    </div>
+                </form>
+            </div>
+        </details>
+    </div>
+</div>
+{% endblock %}

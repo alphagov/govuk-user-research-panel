@@ -1,0 +1,26 @@
+{% extends 'layout.twig' %}
+{% block body %}
+<p>When you sign up to help improve GOV.UK by taking part in research sessions, you confirm that you:</p>
+<ul class="list list-bullet">
+    <li>are 18 years or older</li>
+    <li>live in the United Kingdom or in the European Union</li>
+    <li>are who you say you are (you might be asked to bring ID)</li>
+    <li>will only sign up once</li>
+    <li>will be honest about the information you share</li>
+    <li>will arrive on time to a research session that you agreed to attend</li>
+    <li>will let us know as soon as possible if you can’t make a research session</li>
+</ul>
+
+<p>You understand that when signing up to improve GOV.UK, you aren’t guaranteed to be invited to take part in research.</p>
+<p>You understand that participating in a research session doesn’t guarantee payment. If you’re offered  compensation for your time and travel, it will be agreed when the session is arranged with you. You’ll be given vouchers as compensation. You won’t be offered cash.</p>
+<p>You are responsible for paying any tax liability on any compensation you’re given. If you are offered compensation, you’ll be asked to sign for it when you receive it at the end of the research session.</p>
+<p>If you participate in a face-to-face research session, immediately before taking part in the session you’ll be asked to sign a form giving the Government Digital Service (GDS) consent to recording and observe the session. If you don’t want to be recorded or observed, you can always say so.</p>
+<p>GDS may change how the GOV.UK user research community works or change these terms of participation at any time. You’ll be emailed  if there are any significant changes.</p>
+<p>If you don’t respect these terms of participation, GDS reserves the right to cancel your participation in the GOV.UK user research community and not give you any compensation.</p>
+<p>GDS will use the information you shared with us to invite you to research that is relevant to you.</p>
+{% if previous_step_url %}
+    <div class="form-group">
+        <a href="{{ previous_step_url }}" class="button" role="button">Back</a>
+    </div>
+{% endif %}
+{% endblock %}

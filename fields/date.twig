@@ -1,0 +1,56 @@
+{% if validation_error %}
+    {% set arr = validation_error.value|split('-') %}
+    {% set year = arr[0] %}
+    {% set month = arr[1] %}
+    {% set day = arr[2] %}
+{% else %}
+    {% set year = getFieldValue(field.field~'_year') %}
+    {% set month = getFieldValue(field.field~'_month') %}
+    {% set day = getFieldValue(field.field~'_day') %}
+{% endif %}
+
+<div class="form-group {{ validation_error ? 'error' }}"  id="form_{{ field.field }}">
+    <fieldset>
+        <legend>
+            {% if field.getLabel() %}
+                <span class="form-label-bold">{{ field.getLabel() }}</span>
+            {% endif %}
+            {% if validation_error %}
+                <span class="error-message">{{ validation_error.message }}</span>
+            {% endif %}
+            {% if field.getHelpText() %}
+                <span class="form-hint">{{ field.getHelpText() }}</span>
+            {% endif %}
+        </legend>
+        <div class="form-date">
+            <div class="form-group form-group-day">
+                <label for="{{ field.field }}_day">Day</label>
+                <input class="form-control" type="number" name="{{ field.field }}_day" value="{{ day }}" id="{{ field.field }}_day" onkeyup="update{{ field.field }}Value()">
+            </div>
+
+            <div class="form-group form-group-month">
+                <label for="{{ field.field }}_month">Month</label>
+                <input class="form-control" type="number" name="{{ field.field }}_month" value="{{ month }}" id="{{ field.field }}_month" onkeyup="update{{ field.field }}Value()">
+            </div>
+
+            <div class="form-group form-group-year">
+                <label for="{{ field.field }}_year">Year</label>
+                <input class="form-control" type="number" name="{{ field.field }}_year" value="{{ year }}" id="{{ field.field }}_year" onkeyup="update{{ field.field }}Value()">
+            </div>
+        </div>
+    </fieldset>
+</div>
+<input type="hidden" id="{{ field.field }}" name="{{ field.field }}"/>
+<script type='text/javascript'>
+    update{{ field.field }}Value = function() {
+        var month = document.getElementById('{{ field.field }}_month').value;
+        var day = document.getElementById('{{ field.field }}_day').value;
+        var year = document.getElementById('{{ field.field }}_year').value;
+        if (month.length == 1) month = '0'+month;
+        if (day.length == 1) day = '0'+day;
+        var val = year+'-'+month+'-'+day;
+        if (!month && !day && !year) val = '';
+        document.getElementsByName('{{ field.field }}')[0].value = val;
+    };
+    update{{ field.field }}Value();
+</script>

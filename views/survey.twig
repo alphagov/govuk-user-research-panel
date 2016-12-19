@@ -1,0 +1,28 @@
+{% extends 'layout.twig' %}
+{% block body %}
+<form action="{{ form_action }}" method="POST" class="form">
+
+    {% if current_step.content_location_c == 'above' %}
+        <div class="form-group">
+            {{ step_description|raw }}
+        </div>
+    {% endif %}
+
+    {% for field in fields %}
+        {% include getTemplateNameForField(field) with {'validation_error': validation_errors[field.field]|default(false)|raw} %}
+    {% endfor %}
+
+    <input type="hidden" name="step_id" value="{{ current_step.id }}" />
+
+    {% if current_step.content_location_c != 'above' %}
+        <div class="form-group">
+            {{ step_description|raw }}
+        </div>
+    {% endif %}
+    {% if not isExitStep %}
+        <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+        </div>
+    {% endif %}
+</form>
+{% endblock %}

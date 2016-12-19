@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^(public)($|/) - [L]
+    RewriteRule ^(.+)?$ index.php [L,QSA,DPI]
+</IfModule>

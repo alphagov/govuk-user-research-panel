@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+{% block body %}
+<p>You have removed <strong class="bold-small">{{ email }}</strong> from the database.</p>
+<p>You won’t be invited to any future research sessions.</p>
+<form action="{{ form_action }}" method="POST" class="form">
+    <fieldset id="unsubscribe_reason_c" class="form-group ">
+        <span class="form-label-bold">{{ field_label }}</span>
+        {% if help_text %}
+            <span class="form-hint">{{ help_text }}</span>
+        {% endif %}
+
+        {% for val, label in options_list %}
+            <label class="block-label" for="unsubscribe_reason_c_{{ val }}" data-target="{{ getOtherFieldName('unsubscribe_reason_c', label) }}">
+                <input data-field="unsubscribe_reason_c" type="checkbox" id="unsubscribe_reason_c_{{ val }}" name="unsubscribe_reason_c[]" value="{{ val }}">
+                {{ label }}
+            </label>
+        {% endfor %}
+        <div class="panel panel-border-narrow js-hidden" id="unsubscribe_reason_other_c" aria-hidden="true">
+            <input class="form-control" type="text" name="unsubscribe_reason_other_c" value="" disabled="">
+        </div>
+        <input type="hidden" name="int_usage_location_c[]" value="">
+    </fieldset>
+    <div class="form-group">
+        <input type="submit" class="button" value="Submit"/>
+    </div>
+</form>
+{% endblock %}

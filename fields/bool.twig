@@ -1,0 +1,7 @@
+{% set val = getFieldValue(field.field) %}
+{% set checked = (val == '1') %}
+
+<input {{ checked ? 'checked="checked"' }} type="checkbox" id="form_{{ field.field }}" name="{{ field.field }}" value="1"/>
+{% if field.getLabel() %}
+    <label class="form-label form-control-checkbox" for="form_{{ field.field }}">{{ field.getLabel() }}</label>
+{% endif %}

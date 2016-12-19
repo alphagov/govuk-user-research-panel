@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>{{ survey_title }}</title>
+
+    <!--[if gt IE 8]><!--><link href="/public/stylesheets/govuk-template.css?0.17.3" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
+    <!--[if IE 6]><link href="/public/stylesheets/govuk-template-ie6.css?0.17.3" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 7]><link href="/public/stylesheets/govuk-template-ie7.css?0.17.3" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 8]><link href="/public/stylesheets/govuk-template-ie8.css?0.17.3" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/public/stylesheets/govuk-template-print.css?0.17.3" media="print" rel="stylesheet" type="text/css" />
+
+    <!--[if IE 8]>
+    <script>
+        (function(){if(window.opera){return;}
+            setTimeout(function(){var a=document,g,b={families:(g=
+                            ["nta"]),urls:["/public/stylesheets/fonts-ie8.css?0.17.3"]},
+                    c="/public/javascripts/vendor/goog/webfont-debug.js?0.17.3",d="script",
+                    e=a.createElement(d),f=a.getElementsByTagName(d)[0],h=g.length;WebFontConfig
+                    ={custom:b},e.src=c,f.parentNode.insertBefore(e,f);for(;h=h-1;a.documentElement
+                    .className+=' wf-'+g[h].replace(/\s/g,'').toLowerCase()+'-n4-loading');},0)
+        })()
+    </script>
+    <![endif]-->
+    <!--[if gte IE 9]><!--><link href="/public/stylesheets/fonts.css?0.17.3" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+    <!--[if lt IE 9]><script src="/public/javascripts/ie.js?0.17.3"></script><![endif]-->
+
+    <link rel="shortcut icon" href="/public/images/favicon.ico?0.17.3" type="image/x-icon" />
+    <link rel="mask-icon" href="/public/images/gov.uk_logotype_crown.svg?0.17.3" color="#0b0c0c">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/public/images/apple-touch-icon-152x152.png?0.17.3">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/public/images/apple-touch-icon-120x120.png?0.17.3">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/public/images/apple-touch-icon-76x76.png?0.17.3">
+    <link rel="apple-touch-icon-precomposed" href="/public/images/apple-touch-icon-60x60.png?0.17.3">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="/public/images/opengraph-image.png?0.17.3">
+
+    <!-- Document head block start -->
+    <!--[if gt IE 8]><!--><link href="/public/stylesheets/main.css"  rel="stylesheet" type="text/css"><!--<![endif]-->
+    <!--[if IE 6]><link href="/public/stylesheets/main-ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 7]><link href="/public/stylesheets/main-ie7.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 8]><link href="/public/stylesheets/main-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <!-- Document head block end -->
+</head>
+
+<body>
+<script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+
+
+<div id="skiplink-container">
+    <div>
+        <a href="#content" class="skiplink">Skip to main content</a>
+    </div>
+</div>
+
+<div id="global-cookie-message">
+    <p>GOV.UK uses cookies to make the site simpler. <a href="https://www.carersallowance.service.gov.uk/cookies/en">Find out more about cookies</a></p>
+</div>
+<!--end global-cookie-message-->
+
+<header role="banner" id="global-header" class="with-proposition">
+    <div class="header-wrapper">
+        <div class="header-global">
+            <div class="header-logo">
+                <a href="https://www.gov.uk/" title="Go to the GOV.UK homepage" id="logo" class="content">
+                    <img src="/public/images/gov.uk_logotype_crown_invert_trans.png?0.16.4" width="35" height="31" alt=""> GOV.UK
+                </a>
+            </div>
+        </div>
+        <div class="header-proposition">
+            <div class="content">
+                <nav id="proposition-menu">
+                    <a href="{{ survey_url }}" id="proposition-name">Help us make GOV.UK better</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!--end header-->
+
+<div id="global-header-bar">
+    <div class="inner-block">
+        <div class="header-bar"></div>
+    </div>
+</div>
+<!--end global-header-bar-->
+
+<div id="wrapper">
+    <div class="phase-banner-styleguide">
+        <p>
+            <strong class="phase-tag beta">BETA</strong>
+            <span>This is a new service – your <a href="mailto:contact@take-part-in-research.service.gov.uk">feedback</a> will help us to improve it.</span>
+        </p>
+    </div>
+    {% if preview_mode %}
+    <div class="phase-banner-styleguide">
+        <p>
+            <strong class="phase-tag">PREVIEW MODE</strong>
+            <span>You are in preview mode. To exit click <a href="{{ survey_url }}/exit-preview">here</a>.</span>
+        </p>
+    </div>
+    {% endif %}
+    <main role="main" id="content" tabindex="-1">
+        {% if previous_step_url  %}
+        <a class="link-back" href="{{ previous_step_url }}">Back</a>
+        {% endif %}
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                {% if validation_errors  %}
+                <div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+                    <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+                        Check the form
+                    </h1>
+                    <p>Fix the following:</p>
+                    <ul class="error-summary-list">
+                        {% for field_name, errorArr in validation_errors %}
+                            {% for error in errorArr.messages %}
+                                <li><a href="#form_{{ field_name }}">{{ error }}</a></li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <h1 class="heading-large">{{ header|raw }}</h1>
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </main>
+</div>
+
+
+<footer class="group js-footer" id="footer" role="contentinfo">
+
+    <div class="footer-wrapper">
+
+        <div class="footer-meta">
+            <div class="footer-meta-inner">
+
+                <ul>
+                    <li>
+                        <a href="{{ survey_url }}/cookies">Cookies policy</a>
+                    </li>
+                    <li>
+                        <a href="{{ survey_url }}/terms-and-conditions">Terms and conditions</a>
+                    </li>
+                    <li>
+                        <a href="{{ survey_url }}/privacy">Privacy policy</a>
+                    </li>
+                </ul>
+
+
+                <div class="open-government-licence">
+                    <p class="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a></p>
+
+                    <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
+
+                </div>
+            </div>
+
+            <div class="copyright">
+                <a href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--end footer-->
+
+<div id="global-app-error" class="app-error hidden"></div>
+
+<script src="/public/javascripts/govuk-template.js?0.17.3"></script>
+
+<!-- Scripts start -->
+<script src="/public/javascripts/application.min.js"></script>
+<!-- Scripts end -->
+<script src="/public/javascripts/squiz_custom.js"></script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-43115970-4', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

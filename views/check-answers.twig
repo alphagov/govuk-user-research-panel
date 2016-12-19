@@ -1,0 +1,40 @@
+{% extends 'layout.twig' %}
+{% block body %}
+<form action="{{ form_action }}" method="POST" class="form">
+    <div class="confirmation">
+            {% if onboarding %}
+            <div>
+                <h3>Full name</h3>
+                <div class="data-wrap"><p>{{ context.first_name }} {{ context.last_name }}</p></div>
+            </div>
+            <div>
+                <h3>Email</h3>
+                <div class="data-wrap"><p>{{ context.email1 }}</p></div>
+            </div>
+            {% endif %}
+            {% for result in form_content %}
+                <div>
+                <h3>{{ result.getLabel()|raw }}</h3>
+                <div class="data-wrap">
+                {% for val in result.getValue()|cast_to_array %}
+                    <p>{{ val }}</p>
+                {% endfor  %}
+                </div>
+
+                {% if result.getStep() %}
+                    <a class="change" href="{{ survey_url }}/{{ result.getStep() }}/change">Change<span class="visuallyhidden">{{ result.getLabel()|raw }}</span></a>
+                {% endif %}
+                </div>
+            {% endfor %}
+
+            {% if not onboarding %}
+                <input type="hidden" name="csfr_token" value="{{ csfr_token }}"/>
+            {% endif %}
+    </div>
+    {% if not preview_mode or (preview_mode and declaration_required) %}
+        <div class="form-group">
+            <input type="submit" class="button" value="{{ declaration_required ? 'Continue' : 'Submit' }}"/>
+        </div>
+    {% endif %}
+</form>
+{% endblock %}

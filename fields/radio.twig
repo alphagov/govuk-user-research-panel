@@ -1,0 +1,41 @@
+{% set def = field.getDefinition() %}
+{% set val = getFieldValue(field.field) %}
+
+<fieldset id="form_{{ field.field }}" class="form-group {{ validation_error ? 'error' }}">
+    <legend>
+        {% if not field.getStep().hasMultipleFields() %}
+            <span class="visuallyhidden">{{ field.getStep().name }}</span>
+        {% endif %}
+        {% if field.getLabel() %}
+            <span class="form-label-bold">{{ field.getLabel() }}</span>
+        {% endif %}
+        {% if field.getHelpText() %}
+            <span class="form-hint">{{ field.getHelpText() }}</span>
+        {% endif %}
+        {% if validation_error %}
+            <span class="error-message">{{ validation_error.message }}</span>
+        {% endif %}
+    </legend>
+
+    {% for field_option_key,field_option in field.getDropdownList() if field_option is not empty %}
+        {% set id = field.field ~ '_' ~ field_option_key %}
+        {% set otherFieldName = getOtherFieldName(field.field, field_option) %}
+        {% set checked = (field_option_key == val) %}
+        {% set target = '' %}
+        {# custom behaviour for the country field in onboarding form #}
+        {% if field_option_key == 'No' and field.field == 'uk_citizen_c' %}
+            {% set target = 'country_c_container' %}
+        {%  elseif otherFieldName %}
+            {% set target = otherFieldName %}
+        {% endif %}
+        <label class="block-label" for="{{ id }}" data-target = {{ target }}>
+            <input type="radio" {{ checked ? 'checked' }} id="{{ id }}" name="{{ field.field }}" value="{{ field_option_key }}"/>
+            {{ field_option }}
+        </label>
+        {% if otherFieldName %}
+            <div class="panel panel-border-narrow {{ not checked ? 'js-hidden' }}" id="{{ otherFieldName }}" aria-hidden="{{ checked ? 'false' : 'true' }}">
+                <input class="form-control" type="text" name="{{ otherFieldName }}" value="{{ getFieldValue(otherFieldName) }}">
+            </div>
+        {% endif %}
+    {% endfor %}
+</fieldset>

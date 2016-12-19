@@ -1,0 +1,10 @@
+{% extends 'layout.twig' %}
+{% block body %}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<p class="text">This information will only by used to contact you with research opportunities relevant to you. It won’t be shared with anyone else and you can unsubscribe at any time.</p>
+<div class="form-group">
+    <input type="submit" class="button" value="Continue">
+</div>
+{{ form_end(form) }}
+{% endblock %}

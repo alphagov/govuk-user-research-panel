@@ -1,0 +1,26 @@
+{% extends 'layout.twig' %}
+{% block body %}
+<form action="{{ form_action }}" method="post" class="form">
+        <p>{{ onboarding ? 'By sending this application, you confirm that:' : 'By submitting this survey, you confirm that:' }}</p>
+    <ul class="list list-bullet">
+        <li>the information you've given is correct</li>
+        <li>you agree to the <a href="terms-and-conditions">terms of participation</a> and <a href="privacy">privacy policy</a></li>
+    </ul>
+    <fieldset class="form-group {{ validation_errors['declaration_c'] ? 'error' }}">
+        {% if validation_errors['declaration_c'] %}
+            <span class="error-message" id="error-message-email1">{{ validation_errors['declaration_c']['message'] }}</span>
+        {% endif %}
+        <label class="block-label" for="form_declaration_c">
+            <input type="checkbox" id="form_declaration_c" name="declaration_c" value="1">
+            I agree
+        </label>
+
+    </fieldset>
+    {% if not preview_mode %}
+    <div class="form-group">
+        <input type="submit" class="button" value="{{ onboarding ? 'Send application' : 'Send survey' }}">
+    </div>
+    {% endif %}
+    <input type="hidden" name="csfr_token" value="{{ csfr_token }}"/>
+</form>
+{% endblock %}
