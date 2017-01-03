@@ -33,4 +33,5 @@ Accessed by visiting the onboarding form in the browser.
 
 This code is licensed under the [MIT License](LICENSE), and shareable freely.
 
-It has a depends on SugarCRM, which is commercial software. This can be acquired by speaking with Squiz (adam.frank@squiz.net).
+It has a depends on SugarCRM, which is commercial software.
+This can be acquired by using [Digital Marketplace and procuring via G Cloud](https://www.digitalmarketplace.service.gov.uk/g-cloud/search?q=sugar+crm&lot=saas)
