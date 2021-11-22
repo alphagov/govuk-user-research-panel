@@ -37,7 +37,7 @@ class KernelEventsListener implements EventSubscriberInterface
             'Cache-control' => 'no-store, no-cache',
             'Pragma' => 'no-cache',
             'Expires' =>  '0',
-            'Content-Security-Policy' => "script-src 'self' 'unsafe-inline' www.google-analytics.com ajax.googleapis.com",
+            'Content-Security-Policy' => "script-src 'self' 'unsafe-inline' ajax.googleapis.com",
         ));
     }
 
